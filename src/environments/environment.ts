@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:4000'
+  apiUrl: 'http://ingeramirez0401-001-site10.itempurl.com'
 };
 
 export const mapboxAccess = {
