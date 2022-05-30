@@ -1,0 +1,262 @@
+<h1 *ngIf="isAddMode">Crear Proyecto</h1>
+<h1 *ngIf="!isAddMode">Editar Proyecto</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="card">
+        <div class="card-body">
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label>Código BPIN (*)</label>
+                    <input type="text" formControlName="bpin" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.bpin.errors }" />
+                    <div *ngIf="submitted && f.bpin.errors" class="invalid-feedback">
+                        <div *ngIf="f.bpin.errors.required">El campo código BPIN es requerido</div>
+                    </div>
+                </div>
+                <div class="form-group col-6">
+                    <label>Municipio (*)</label>
+                    <input type="text" formControlName="municipio" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.municipio.errors }" />
+                    <div *ngIf="submitted && f.municipio.errors" class="invalid-feedback">
+                        <div *ngIf="f.municipio.errors.required">El campo municipio es requerido</div>
+                    </div>
+                </div>
+
+                <div class="form-group col-12">
+                    <label>Proyecto (*)</label>
+                    <textarea name="proyecto" formControlName="proyecto" rows="5" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.proyecto.errors }"></textarea>
+                    <div *ngIf="submitted && f.proyecto.errors" class="invalid-feedback">
+                        <div *ngIf="f.proyecto.required">El campo proyecto es requerido</div>
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                    <label>Objeto del Contrato</label>
+                    <textarea name="objeto" formControlName="objeto" rows="5" class="form-control"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label>¿Proyecto de 120 ideas?</label>
+                    <select name="ideas" formControlName="ideas" class="form-control">
+                        <option value="">Seleccione</option>
+                        <option value="Si">Sí</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div class="form-group col-6">
+                    <label>Tipo de Proyecto (*)</label>
+                    <select name="tipoProyecto" formControlName="tipoProyecto" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tipoProyecto.errors }">
+                        <option value="">Seleccione</option>
+                        <option value="Obra">Obra</option>
+                        <option value="Interventoría">Interventoría</option>
+                    </select>
+                    <div *ngIf="submitted && f.tipoProyecto.errors" class="invalid-feedback">
+                        <div *ngIf="f.tipoProyecto.required">El campo tipo de proyecto es requerido</div>
+                    </div>
+                </div>
+                <div class="form-group col-6">
+                    <label>Valor Inicial del Proyecto</label>
+                    <input type="text" currencyMask name="valorInicial" formControlName="valorInicial" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label>Valor Final del Proyecto</label>
+                    <input type="text" currencyMask name="valorFinal" formControlName="valorFinal" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label>Tipo de Fuente (*)</label>
+                    <select name="tipoFuente" formControlName="tipoFuente" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tipoFuente.errors }">
+                        <option value="">Seleccione</option>
+                        <option value="Propias">Propias</option>
+                        <option value="Regalías">Regalías</option>
+                        <option value="Otras">Otras</option>
+                        <option value="Mixtas">Mixtas</option>
+                    </select>
+                    <div *ngIf="submitted && f.tipoFuente.errors" class="invalid-feedback">
+                        <div *ngIf="f.tipoFuente.required">El campo tipo de fuente es requerido</div>
+                    </div>
+                </div>
+                <div class="form-group col-6">
+                    <label>Valor Fuentes Propias</label>
+                    <input type="text" currencyMask name="valorFuentesPropias" formControlName="valorFuentesPropias" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label>Valor Fuentes Regalías</label>
+                    <input type="text" currencyMask name="valorFuentesRegalias" formControlName="valorFuentesRegalias" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label>Valor Fuentes Otros</label>
+                    <input type="text" currencyMask name="valorFuentesOtros" formControlName="valorFuentesOtros" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label>Cofinanciación</label>
+                    <input type="text" name="cofinanciacion" formControlName="cofinanciacion" class="form-control" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label>Secretaría (*)</label>
+                    <select name="secretaria" formControlName="secretaria" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.secretaria.errors }">
+                        <option value="">Seleccione</option>
+                        <option   *ngFor="let s of dependenciaList" [value]="s">{{s}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.secretaria.errors" class="invalid-feedback">
+                        <div *ngIf="f.secretaria.required">El campo secretaría es requerido</div>
+                    </div>
+                </div>
+                <div class="form-group col-6">
+                    <label>Supervisor (*)</label>
+                    <input type="text" name="supervisor" formControlName="supervisor" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.supervisor.errors }" />
+                    <div *ngIf="submitted && f.supervisor.errors" class="invalid-feedback">
+                        <div *ngIf="f.supervisor.required">El campo supervisor es requerido</div>
+                    </div>
+                </div>
+                <div class="form-group col-6">
+                    <label>Número de Contratación</label>
+                    <input type="text" name="numContratacion" formControlName="numContratacion" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label>Contratista</label>
+                    <input type="text" name="contratista" formControlName="contratista" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label>Nit Contratista</label>
+                    <input type="text" name="nit" formControlName="nit" class="form-control" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label>Fecha de Suscripción</label>
+                    <input type="date" name="fechaSuscripcion" formControlName="fechaSuscripcion" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label>Tiempo de Ejecución en Meses</label>
+                    <input type="text" name="tiempoEjecucionMeses" formControlName="tiempoEjecucionMeses" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label>Fecha de Inicio</label>
+                    <input type="date" name="fechaInicio" formControlName="fechaInicio" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label>Fecha de Terminación Prevista</label>
+                    <input type="date" name="fechaTerminacionPrevista" formControlName="fechaTerminacionPrevista" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label>Fecha de Finalización Estimada</label>
+                    <input type="date" name="fechaFinalizacionEstimada" formControlName="fechaFinalizacionEstimada" class="form-control" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label>Número de Adicionales</label>
+                    <input type="number" name="numeroAdicionales" formControlName="numeroAdicionales" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label>Valor Adicional</label>
+                    <input type="text" currencyMask name="valorAdicional" formControlName="valorAdicional" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label>Tiempo de Adición en Meses</label>
+                    <input type="number" name="tiempoAdicionMeses" formControlName="tiempoAdicionMeses" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label>Tiempo de Suspensión en Meses</label>
+                    <input type="number" name="tiempoSuspensionMeses" formControlName="tiempoSuspensionMeses" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label>Alcance Físico</label>
+                    <input type="text" name="alcanceFisico" formControlName="alcanceFisico" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label>Avance Físico</label>
+                    <input type="text" name="avanceFisico" formControlName="avanceFisico" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label>Porcentaje Avance Físico (%)</label>
+                    <input type="number" maxValue="100" minValue="0" name="porcentajeAvanceFisico" formControlName="porcentajeAvanceFisico" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label>Tiempo de Atraso en Meses</label>
+                    <input type="number" name="tiempoAtrasoMeses" formControlName="tiempoAtrasoMeses" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label>Pagos Realizados</label>
+                    <input type="text" currencyMask name="pagosRealizados" formControlName="pagosRealizados" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label>Porcentaje Avance Financiero (%)</label>
+                    <input type="number" maxValue="100" minValue="0" name="porcentajeAvanceFinanciero" formControlName="porcentajeAvanceFinanciero" class="form-control" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label>Estado del Proyecto (*)</label>
+                    <select name="estadoActual" formControlName="estadoActual" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.estadoActual.errors }">
+                        <option value="">Seleccione</option>
+                        <option value="Activo">Activo</option>
+                        <option value="En Ejecución">En Ejecución</option>
+                        <option value="Ejecutado">Ejecutado</option>
+                        <option value="En Proceso Contractual">Proceso Contractual</option>
+                        <option value="Etapa de Liquidación">Etapa de Liquidación</option>
+                        <option value="Finalizado">Finalizado</option>
+                        <option value="Suspendido">Suspendido</option>
+                        <option value="Terminado">Terminado</option>
+                        <option value="Sin Estado">Sin Estado</option>
+                    </select>
+                    <div *ngIf="submitted && f.estadoActual.errors" class="invalid-feedback">
+                        <div *ngIf="f.estadoActual.required">El campo estado del proyecto es requerido</div>
+                    </div>
+                </div>
+                <div class="form-group col-6">
+                    <label>Fecha Estado</label>
+                    <input type="date" name="fechaEstado" formControlName="fechaEstado" class="form-control" />
+                </div>
+                <div class="form-group col-12">
+                    <label>Observaciones</label>
+                    <textarea name="observaciones" formControlName="observaciones" rows="5" class="form-control"></textarea>
+                </div>
+                <div class="form-group col-12">
+                    <label>Población Beneficiada</label>
+                    <textarea name="poblacionBeneficiada" formControlName="poblacionBeneficiada" rows="5" class="form-control"></textarea>
+                </div>
+                <div class="form-group col-12">
+                    <label>Impacto Generado</label>
+                    <textarea name="impactoGenerado" formControlName="impactoGenerado" rows="5" class="form-control"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    <i class="icofont-save"></i> Guardar
+                </button>
+                <a routerLink="/admin/clients" class="btn btn-danger"><i class="icofont-ui-close"></i> Cancelar</a>
+            </div>
+        </div>
+    </div>
+</form>

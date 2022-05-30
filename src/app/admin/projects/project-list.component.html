@@ -1,0 +1,46 @@
+<h1>Administración de Proyectos</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2"><i class="icofont-ui-add"></i> Nuevo Proyecto</a> | <a routerLink="reporte" class="btn btn-sm btn-info mb-2"><i class="icofont-ui-add"></i> Reporte</a>
+
+<div class="table-responsive">
+    <table id="table" class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>BPIN</th>
+                <th>Municipio</th>
+                <th>Proyecto</th>
+                <th>Tipo de Proyecto</th>
+                <th>Valor Inicial</th>
+                <th>Valor Final</th>
+                <th>Secretaría</th>
+                <th>Ult. Actualización</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of projects; let i=index">
+                <td><a routerLink="view/{{p.id}}" class="btn btn-sm btn-warning mr-1 btn-item"><i class="icofont-eye"></i></a></td>
+                <td>{{p.bpin}}</td>
+                <td>{{p.municipio}}</td>
+                <td>{{p.proyecto}}</td>
+                <td>{{p.tipoProyecto}}</td>
+                <td>{{p.valorInicial | currency}}</td>
+                <td>{{p.valorFinal | currency}}</td>
+                <td>{{p.secretaria}}</td>
+                <td>{{p.updated | date}}</td>
+                <td style="white-space: nowrap">
+                    <a routerLink="edit/{{p.id}}" class="btn btn-sm btn-primary btn-opc mr-1"><i class="icofont-edit"></i></a>
+                    <button (click)="deleteProject(p.id)" class="btn btn-sm btn-danger btn-opc" [disabled]="p.isDeleting">
+                        <span *ngIf="p.isDeleting" class="spinner-border spinner-border-sm"></span>
+                        <span *ngIf="!p.isDeleting"><i class="icofont-ui-delete"></i></span>
+                    </button>
+                </td>
+            </tr>
+            <tr *ngIf="!projects">
+                <td colspan="4" class="text-center">
+                    <span class="spinner-border spinner-border-lg align-center"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

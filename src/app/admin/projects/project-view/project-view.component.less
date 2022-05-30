@@ -1,0 +1,158 @@
+* {
+    font-size: 16px;
+}
+
+.ticket {
+    width: 30.0cm;
+    max-width: 30.0cm;
+    background-color: #FFF;
+    padding: 8px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.col2 {
+    width:5cm;
+}
+
+.col4 {
+    width: 10cm;
+    text-align: center;
+}
+
+.col6 {
+    width: 15cm;
+}
+
+.col8 {
+    width: 20cm;
+}
+
+.col10 {
+    width: 25cm;
+}
+
+.col12 {
+    width: 30cm;
+}
+
+
+.logo-img {
+    width: 80%;
+}
+
+.title {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.consecutive span {
+    color: darkred;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.ayuda {
+    width: 5%;
+    font-weight: bold;
+}
+
+.desc {
+    width: 30%;
+    font-weight: bold;
+    word-wrap: break-word;
+    text-align: justify;
+}
+
+.cont {
+    width: 30%;
+    font-weight: bold;
+    word-wrap: break-word;
+    text-align: justify;
+}
+
+.cant {
+    width: 5%;
+    font-weight: bold;
+}
+
+.obs {
+    width: 30%;
+    font-weight: bold;
+    word-wrap: break-word;
+    text-align: justify;
+}
+
+
+#btn-back {
+    margin-top: 10px;
+}
+
+.circle-back {
+    background:#d2eaf1;
+}
+
+.circle-wrap {
+    margin: 150px auto;
+    width: 150px;
+    height: 150px;
+    background: #fefcff;
+    border-radius: 50%;
+    border: 1px solid #cdcbd0;
+  }
+  
+  .circle-wrap .circle .mask,
+  .circle-wrap .circle .fill {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    border-radius: 50%;
+  }
+  
+  .circle-wrap .circle .mask {
+    clip: rect(0px, 150px, 150px, 75px);
+  }
+  
+  .circle-wrap .inside-circle {
+    width: 122px;
+    height: 122px;
+    border-radius: 50%;
+    background: #d2eaf1;
+    line-height: 120px;
+    text-align: center;
+    margin-top: 14px;
+    margin-left: 14px;
+    color: #1e51dc;
+    position: absolute;
+    z-index: 100;
+    font-weight: 700;
+    font-size: 2em;
+  }
+  
+  /* color animation */
+  
+  /* 3rd progress bar */
+  .mask .fill {
+    clip: rect(0px, 75px, 150px, 0px);
+    background-color: #227ded;
+  }
+  
+  .mask.full,
+  .circle .fill {
+    animation: fill ease-in-out 3s;
+    transform: rotate(135deg);
+  }
+  
+  @keyframes fill{
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(135deg);
+    }
+  }

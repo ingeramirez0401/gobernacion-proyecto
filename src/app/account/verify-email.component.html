@@ -1,0 +1,12 @@
+﻿<h3 class="card-header text-center">Verificar Email</h3>
+<div class="card-body">
+    <div align="center">
+        <img src="./assets/images/logo.png" alt="Logo AYG PHARMA" class="img-responsive">
+    </div>
+    <div *ngIf="emailStatus == EmailStatus.Verifying">
+        Verificando...
+    </div>
+    <div *ngIf="emailStatus == EmailStatus.Failed">
+        La verificación falló, puede verificar su cuenta ingresando a la página <a routerLink="forgot-password">Recuperar Cuenta</a>.
+    </div>
+</div>

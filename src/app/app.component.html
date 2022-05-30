@@ -1,0 +1,22 @@
+﻿<div class="app-container" [ngClass]="{ 'bg-light': account }">
+    <!-- main nav -->
+    <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="account">
+        <div class="navbar-nav">
+            <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item nav-link">Inicio</a>
+            <a *ngIf="account.role === Role.Admin" routerLink="/admin" routerLinkActive="active" class="nav-item nav-link">Area de Administración</a>
+            <a routerLink="/profile" routerLinkActive="active" class="nav-item nav-link">Perfíl del Usuario</a>
+            <a (click)="logout()" class="nav-item nav-link">Salir</a>
+        </div>
+    </nav>
+
+    <!-- global alert -->
+    <alert></alert>
+
+    <!-- main router outlet -->
+    <router-outlet></router-outlet>
+
+    <br><br><br>
+    <div class="footer">
+        <p>{{ date.getFullYear() }} Gobernación de Norte de Santander</p>
+    </div>
+</div>

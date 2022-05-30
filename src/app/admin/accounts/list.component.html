@@ -1,0 +1,32 @@
+﻿<h2>Administración de Usuarios</h2>
+<a routerLink="add" class="btn btn-sm btn-primary mb-2"><i class="icofont-ui-add"></i> Crear Cuenta</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre Completo</th>
+            <th>Correo electrónico</th>
+            <th>Rol de Usuario</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let account of accounts">
+            <td>{{account.title}} {{account.firstName}} {{account.lastName}}</td>
+            <td>{{account.email}}</td>
+            <td>{{account.role}}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{account.id}}" class="btn btn-sm btn-primary mr-1"><i class="icofont-edit"></i></a>
+
+                <button (click)="deleteAccount(account.id)" class="btn btn-sm btn-danger btn-delete-account" [disabled]="account.isDeleting">
+                    <span *ngIf="account.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!account.isDeleting"><i class="icofont-ui-delete"></i></span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!accounts">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
