@@ -1,158 +1,352 @@
 * {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .ticket {
-    width: 30.0cm;
-    max-width: 30.0cm;
-    background-color: #FFF;
-    padding: 8px;
+  width: 30cm;
+  max-width: 30cm;
+  background-color: #fff;
 }
 
 .flex-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.col1 {
+  width: 2.5cm;
 }
 
 .col2 {
-    width:5cm;
+  width: 5cm;
+}
+
+.col3 {
+  width: 7.5cm;
 }
 
 .col4 {
-    width: 10cm;
-    text-align: center;
+  width: 10cm;
+  text-align: center;
+}
+
+.col5 {
+  width: 12.5cm;
 }
 
 .col6 {
-    width: 15cm;
+  width: 15cm;
+}
+
+.col7 {
+  width: 17.5cm;
 }
 
 .col8 {
-    width: 20cm;
+  width: 20cm;
+}
+
+.col9 {
+  width: 22.5cm;
 }
 
 .col10 {
-    width: 25cm;
+  width: 25cm;
 }
 
 .col12 {
-    width: 30cm;
+  width: 30cm;
 }
 
-
 .logo-img {
-    width: 80%;
+  width: 80%;
 }
 
 .title {
-    text-align: center;
-    font-weight: bold;
-    margin-top: 5px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 5px;
 }
 
 .consecutive span {
-    color: darkred;
-    font-weight: bold;
-    margin-top: 5px;
+  color: darkred;
+  font-weight: bold;
+  margin-top: 5px;
 }
 
 .ayuda {
-    width: 5%;
-    font-weight: bold;
+  width: 5%;
+  font-weight: bold;
 }
 
 .desc {
-    width: 30%;
-    font-weight: bold;
-    word-wrap: break-word;
-    text-align: justify;
+  width: 30%;
+  font-weight: bold;
+  word-wrap: break-word;
+  text-align: justify;
 }
 
 .cont {
-    width: 30%;
-    font-weight: bold;
-    word-wrap: break-word;
-    text-align: justify;
+  width: 30%;
+  font-weight: bold;
+  word-wrap: break-word;
+  text-align: justify;
 }
 
 .cant {
-    width: 5%;
-    font-weight: bold;
+  width: 5%;
+  font-weight: bold;
 }
 
 .obs {
-    width: 30%;
-    font-weight: bold;
-    word-wrap: break-word;
-    text-align: justify;
+  width: 30%;
+  font-weight: bold;
+  word-wrap: break-word;
+  text-align: justify;
 }
 
-
 #btn-back {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 // Este es el progress de porcentaje
 .circle-back {
-    background:#d2eaf1;
+  background: #d2eaf1;
 }
 
 .circle-wrap {
-    margin: 150px auto;
-    width: 150px;
-    height: 150px;
-    background: #fefcff;
-    border-radius: 50%;
-    border: 1px solid #cdcbd0;
+  margin: 150px auto;
+  width: 150px;
+  height: 150px;
+  background: #fefcff;
+  border-radius: 50%;
+  border: 1px solid #cdcbd0;
+}
+
+.circle-wrap .circle .mask,
+.circle-wrap .circle .fill {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.circle-wrap .circle .mask {
+  clip: rect(0px, 150px, 150px, 75px);
+}
+
+.circle-wrap .inside-circle {
+  width: 122px;
+  height: 122px;
+  border-radius: 50%;
+  background: #d2eaf1;
+  line-height: 120px;
+  text-align: center;
+  margin-top: 14px;
+  margin-left: 14px;
+  color: #1e51dc;
+  position: absolute;
+  // z-index: 100; hace que se vea encima del footer
+  font-weight: 700;
+  font-size: 2em;
+}
+
+/* color animation */
+
+/* 3rd progress bar */
+.mask .fill {
+  clip: rect(0px, 75px, 150px, 0px);
+  background-color: #227ded;
+}
+
+.mask.full,
+.circle .fill {
+  animation: fill ease-in-out 3s;
+  transform: rotate(135deg);
+}
+
+@keyframes fill {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  .circle-wrap .circle .mask,
-  .circle-wrap .circle .fill {
-    width: 150px;
-    height: 150px;
-    position: absolute;
-    border-radius: 50%;
-  }
-  
-  .circle-wrap .circle .mask {
-    clip: rect(0px, 150px, 150px, 75px);
-  }
-  
-  .circle-wrap .inside-circle {
-    width: 122px;
-    height: 122px;
-    border-radius: 50%;
-    background: #d2eaf1;
-    line-height: 120px;
-    text-align: center;
-    margin-top: 14px;
-    margin-left: 14px;
-    color: #1e51dc;
-    position: absolute;
-    z-index: 100;
-    font-weight: 700;
-    font-size: 2em;
-  }
-  
-  /* color animation */
-  
-  /* 3rd progress bar */
-  .mask .fill {
-    clip: rect(0px, 75px, 150px, 0px);
-    background-color: #227ded;
-  }
-  
-  .mask.full,
-  .circle .fill {
-    animation: fill ease-in-out 3s;
+  100% {
     transform: rotate(135deg);
   }
-  
-  @keyframes fill{
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(135deg);
-    }
+}
+
+#header-proyecto {
+  background-image: url("./../../../../assets/images/fondo.png");
+  background-size: cover;
+  height: 13cm;
+  background-origin: content-box;
+  background-repeat: no-repeat;
+  padding: 0;
+}
+
+#under-1 {
+  background-color: #f9a546;
+  padding: 12.3px;
+}
+
+#under-2 {
+  background-color: #f89b2d;
+  padding: 22px;
+}
+
+#under-3 {
+  background-color: #dd882d;
+  padding: 22px;
+}
+
+#objeto-contrato {
+  color: #114c87;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: justify;
+}
+
+.custom-padding {
+  padding: 8px;
+}
+
+#vl {
+  border-left: 6px solid #f89b2d;
+  height: 9rem;
+}
+
+#primer-badge {
+  background-color: #306db5;
+}
+
+#primer-badge span.bg-white {
+  color: #306db5;
+  vertical-align: middle;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+#segundo-badge {
+  background-color: #114c87;
+}
+
+#segundo-badge span.bg-white {
+  color: #114c87;
+  vertical-align: middle;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.badge-logos {
+  width: 60px;
+}
+
+.badge-personas {
+  width: 60px;
+  position: relative;
+}
+
+.fuentes-color {
+  color: #114c87;
+  font-weight: bold;
+}
+
+.fuentes-color strong {
+  color: #f89b2d;
+}
+
+.calendario {
+  background-color: #fef3e5;
+  display: flex;
+}
+
+.calendario p {
+  color: #f89b2d;
+  margin: 0;
+  font-weight: bold;
+}
+
+.calendario strong {
+  color: #114c87;
+  font-weight: bold;
+}
+
+.personas {
+  background-color: #114c87;
+  display: flex;
+  border-radius: 50rem 0 0 50rem !important;
+}
+
+.personas span {
+  align-self: center;
+  display: grid;
+  margin-right: auto;
+}
+
+.base-circle {
+  width: 160px;
+  height: 160px;
+  position: relative;
+}
+
+.outer {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  padding: 20px;
+  box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
+    -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+}
+
+.inner {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2),
+    inset -4px -4px 10px -1px rgba(255, 255, 255, 0.7),
+    -0.5px -0.5px 0px rgba(255, 255, 255, 1),
+    0.5px 0.5px 0px rgba(0, 0, 0, 0.15), 0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+}
+
+#number1, #number2 {
+  font-weight: bold;
+  color: #114c87;
+}
+
+circle#circle1 {
+  fill: none;
+  stroke: url(#GradientColor1);
+  stroke-width: 20px;
+  stroke-dasharray: 472;
+  stroke-dashoffset: 0;
+  animation: anim 2s linear forwards;
+}
+
+circle#circle2 {
+  fill: none;
+  stroke: url(#GradientColor2);
+  stroke-width: 20px;
+  stroke-dasharray: 472;
+  stroke-dashoffset: 0;
+  animation: anim 2s linear forwards;
+}
+
+svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@keyframes anim {
+  100% {
+    stroke-dashoffset: 0; //Este es el numero que se debe cambiar para que se mueva con el porcentaje
+    // El numero es el maximo del dasharray, entonces el porcentaje se debe obtener restando a 472 el porcentaje
   }
+}
+
+.poblacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -15,7 +15,7 @@ export class ProjectViewComponent implements OnInit {
   id: string;
   projectData: any;
 
-  constructor(private router: Router, 
+  constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private projectService: ProjectService) { }
 
@@ -50,8 +50,12 @@ export class ProjectViewComponent implements OnInit {
         if(x.updated != null) {
           x.updated = x.updated.split('T')[0];
       }
-        
+
         this.projectData = x;
+        setTimeout(() => {
+          this.circleFuncFisico(this.projectData.porcentajeAvanceFisico);
+          this.circleFuncFinanciero(this.projectData.porcentajeAvanceFinanciero);
+        }, 100);
         console.log(this.projectData);
       });
   }
@@ -70,5 +74,31 @@ export class ProjectViewComponent implements OnInit {
 
   goToList() {
     this.router.navigate(['/proyectos','list']);
+  }
+
+  circleFuncFisico(perc: number) {
+    let number = document.getElementById('number1');
+    let counter = 0;
+    setInterval(() => {
+      if (counter == perc) {
+        clearInterval();
+      } else {
+        counter += 1;
+        number.innerHTML = counter + "%" + "Avance Físico";
+      }
+    }, 20);
+  }
+
+  circleFuncFinanciero(perc: number) {
+    let number = document.getElementById('number2');
+    let counter = 0;
+    setInterval(() => {
+      if (counter == perc) {
+        clearInterval();
+      } else {
+        counter += 1;
+        number.innerHTML = counter + "%" + "Avance Financiero";
+      }
+    }, 20);
   }
 }

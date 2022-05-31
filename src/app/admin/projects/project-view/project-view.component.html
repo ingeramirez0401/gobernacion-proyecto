@@ -1,181 +1,254 @@
 <h1 *ngIf="projectData">Consultar Proyecto</h1>
 
 <div class="text-center">
-    <div *ngIf="projectData" id="reporte" class="ticket demo">
-        <div id="print">
-            <div class="flex-container">
-                <div class="col4">
-                    <img src="./assets/images/logo.png" class="logo-img" alt="Logo Gobernación">
-                </div>
-                <div class="col8">
-                    <h3><strong>{{projectData.proyecto | uppercase}}</strong></h3>
-                </div>
-            </div>
-            <hr>
-            <div class="flex-container">
-                <div class="col4">
-                    <h3>Código BPIN: <strong>{{projectData.bpin | uppercase}}</strong></h3>
-                </div>
-                <div class="col4">
-                    <h3>No. Contratación: <strong>{{projectData.numContratacion | uppercase}}</strong></h3>
-                </div>
-                <div class="col4">
-                    <h3>Última Actualización: <strong>{{projectData.updated | date}}</strong></h3>
-                </div>
-            </div>
-            <br>
-            <div class="flex-container">
-                <div class="col6">
-                    <h3><strong>MUNICIPIOS BENEFICIADOS:</strong> {{projectData.municipio | uppercase}}</h3>
-                </div>
-                <div class="col4">
-                    <h3>Tipo de Proyecto: <strong>{{projectData.tipoProyecto | uppercase}}</strong></h3>
-                </div>
-                <div class="col2">
-                    <h3>120 Ideas: <strong>{{projectData.ideas | uppercase}}</strong></h3>
-                </div>
-            </div>
-            <br>
-            <div class="flex-container bg-light">
-                <div class="col12">
-                    <h3 style="font-size: 25px; font-weight: bold;" class="text-center">OBJETO DEL CONTRATO</h3>
-                    <p style="text-align: center">{{projectData.objeto}}</p>
-                </div>
-            </div>
-            <div class="flex-container">
-                <div class="col12">
-                    <table class="table table-bordered table-sm">
-                        <thead>
-                            <tr class="table-info">
-                                <th scope="col">VALOR INICIAL</th>
-                                <th scope="col">VALOR FINAL|</th>
-                                <th scope="col">FUENTES REGALÍAS</th>
-                                <th scope="col">FUENTES PROPIAS</th>
-                                <th scope="col">FUENTES OTROS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">{{projectData.valorInicial | currency}}</th>
-                                <th scope="row">{{projectData.valorFinal | currency}}</th>
-                                <th scope="row">{{projectData.valorFuentesRegalias | currency}}</th>
-                                <th scope="row">{{projectData.valorFuentesPropias | currency}}</th>
-                                <th scope="row">{{projectData.valorFuentesOtros | currency}}</th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="flex-container">
-                <div class="col4">
-                    <div class="card bg-light mr-2">
-                        <div class="card-header"><strong>FECHA DE SUSCRIPCIÓN</strong></div>
-                        <div class="card-body">
-                            <h2 style="font-size: 18px" class="text-center"><strong>{{projectData.fechaSuscripcion | date}}</strong></h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col4">
-                    <div class="card bg-light mr-2">
-                        <div class="card-header"><strong>FECHA DE INICIO</strong></div>
-                        <div class="card-body">
-                            <h2 style="font-size: 18px" class="text-center"><strong>{{projectData.fechaInicio | date}}</strong></h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col4">
-                    <div class="card bg-light mr-2">
-                        <div class="card-header"><strong>FECHA DE TERMINACIÓN</strong></div>
-                        <div class="card-body">
-                            <h2 style="font-size: 18px" class="text-center"><strong>{{projectData.fechaTerminacionPrevista | date}}</strong></h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="flex-container">
-                <div class="col12">
-                    <table class="table table-bordered table-sm">
-                        <thead>
-                            <tr class="table-info">
-                                <th scope="col">SUPERVISOR</th>
-                                <th scope="col">CONTRATISTA</th>
-                                <th scope="col">NIT</th>
-                                <th scope="col">SECRETARÍA</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">{{projectData.supervisor | uppercase}}</th>
-                                <th scope="row">{{projectData.contratista | uppercase}}</th>
-                                <th scope="row">{{projectData.nit}}</th>
-                                <th scope="row">{{projectData.secretaria | uppercase}}</th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <br>
-            <div class="flex-container">
-                <div class="col6">
-                    <div class="card bg-light mr-2">
-                        <div class="card-header"><strong>AVANCE FÍSICO</strong></div>
-                        <div class="card-body">
-                            <h1 style="font-size: 40px" class="text-center"><strong style="font-size: 40px !important">{{projectData.porcentajeAvanceFisico | number}}%</strong></h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col6">
-                    <div class="card bg-light mr-2">
-                        <div class="card-header"><strong>AVANCE FINANCIERO</strong></div>
-                        <div class="card-body">
-                            <h1 style="font-size: 40px !important" class="text-center"><strong style="font-size: 40px !important">{{projectData.porcentajeAvanceFinanciero | number}}%</strong></h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="flex-container">
-                <div class="col12">
-                    <div class="card bg-light mr-2">
-                        <div class="card-header"><strong>AVANCE FÍSICO</strong></div>
-                        <div class="card-body circle-back">
-                            <div class="circle-wrap">
-                                <div class="circle">
-                                    <div class="mask full">
-                                        <div class="fill"></div>
-                                    </div>
-                                    <div class="mask half">
-                                        <div class="fill"></div>
-                                    </div>
-                                    <div class="inside-circle"> 90% </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="flex-container bg-light">
-                <div class="col12">
-                    <h3 style="font-size: 25px; font-weight: bold;" class="text-center">OBSERVACIONES</h3>
-                    <p style="text-align: center">{{projectData.observaciones}}</p>
-                </div>
-            </div>
-            <div class="flex-container bg-light">
-                <div class="col12">
-                    <h3 style="font-size: 25px; font-weight: bold;" class="text-center">IMPACTO GENERADO</h3>
-                    <p style="text-align: center">{{projectData.impactoGenerado}}</p>
-                </div>
-            </div>
-            <div class="flex-container bg-light">
-                <div class="col12">
-                    <h3 style="font-size: 25px; font-weight: bold;" class="text-center">POBLACIÓN BENEFICIADA</h3>
-                    <p style="text-align: center">{{projectData.poblacionBeneficiada | uppercase}}</p>
-                </div>
-            </div>
+  <div *ngIf="projectData" id="reporte" class="ticket demo">
+    <div id="print">
+      <div class="flex-container" id="header-proyecto">
+        <div class="col8 m-3 text-left p-5 text-white">
+          <h3>
+            Código BPIN: <strong>{{ projectData.bpin | uppercase }}</strong>
+          </h3>
+          <h3>
+            No. Contratación:
+            <strong>{{ projectData.numContratacion | uppercase }}</strong>
+          </h3>
+          <h3>
+            Última Actualización:
+            <strong>{{ projectData.updated | date }}</strong>
+          </h3>
         </div>
+        <div class="col4 text-right m-5">
+          <img
+            src="./assets/images/logoblanco.png"
+            class="logo-img"
+            alt="Logo Gobernación"
+          />
+          <!-- <h3>
+            <strong>{{ projectData.proyecto | uppercase }}</strong>
+          </h3> -->
+        </div>
+      </div>
+      <div class="flex-container align-items-center p-0">
+        <div class="col5 text-white" id="under-1">
+          <h3 class="m-0">
+            <strong>MUNICIPIOS BENEFICIADOS:</strong>
+            {{ projectData.municipio | uppercase }}
+          </h3>
+        </div>
+        <div class="col5 text-white" id="under-2">
+          <h3 class="m-0">
+            Tipo de Proyecto:
+            <strong>{{ projectData.tipoProyecto | uppercase }}</strong>
+          </h3>
+        </div>
+        <div class="col2 text-white" id="under-3">
+          <h3 class="m-0">
+            120 Ideas: <strong>{{ projectData.ideas | uppercase }}</strong>
+          </h3>
+        </div>
+      </div>
+      <div class="flex-container align-items-center p-5">
+        <div class="col2">
+          <img src="./../../../../assets/images/icono 2.png" class="w-50" />
+          <p style="color: #f89b2d; font-weight: bold">Objeto del contrato</p>
+        </div>
+        <div class="col1">
+          <div class="ml-4" id="vl"></div>
+        </div>
+        <div class="col9">
+          <p id="objeto-contrato">{{ projectData.objeto }}</p>
+        </div>
+      </div>
+      <div class="flex-container align-items-center p-5 text-white">
+        <div class="col7">
+          <div class="rounded-pill mb-3 p-2" id="primer-badge">
+            <span>
+              <img
+                src="./../../../../assets/images/icono 1.png"
+                class="badge-logos"
+              />
+              Valor Inicial
+            </span>
+            <span class="bg-white mx-1 p-2 px-4 rounded-pill">{{
+              projectData.valorInicial | currency
+            }}</span>
+          </div>
+          <div class="rounded-pill p-2" id="segundo-badge">
+            <span>
+              <img
+                src="./../../../../assets/images/icono 1.png"
+                class="badge-logos"
+              />
+              Valor Final
+            </span>
+            <span class="bg-white mx-1 p-2 px-4 rounded-pill">{{
+              projectData.valorFinal | currency
+            }}</span>
+          </div>
+        </div>
+        <div class="col5 pl-5 text-left">
+          <p class="fuentes-color">
+            Fuentes Regalías:
+            <strong>{{ projectData.valorFuentesRegalias | currency }}</strong>
+          </p>
+          <p class="fuentes-color">
+            Fuentes Propias:
+            <strong>{{ projectData.valorFuentesPropias | currency }}</strong>
+          </p>
+          <p class="fuentes-color">
+            Fuentes Otros:
+            <strong>{{ projectData.valorFuentesOtros | currency }}</strong>
+          </p>
+        </div>
+      </div>
+      <div class="flex-container align-items-center pl-5 pb-5 pt-5 text-white">
+        <div class="col7">
+          <div class="calendario px-3 py-5 mr-3">
+            <div>
+              <img
+                src="./../../../../assets/images/icono 3.png"
+                class="w-25 mb-2"
+              />
+              <p>Fecha de suscripción</p>
+              <strong>{{ projectData.fechaSuscripcion | date }}</strong>
+            </div>
+            <div>
+              <img
+                src="./../../../../assets/images/icono 3.png"
+                class="w-25 mb-2"
+              />
+              <p>Fecha de Inicio</p>
+              <strong>{{ projectData.fechaInicio | date }}</strong>
+            </div>
+            <div>
+              <img
+                src="./../../../../assets/images/icono 3.png"
+                class="w-25 mb-2"
+              />
+              <p>Fecha de Terminación</p>
+              <strong>{{ projectData.fechaTerminacionPrevista | date }}</strong>
+            </div>
+          </div>
+        </div>
+        <div class="col5">
+          <div class="mb-3 personas">
+            <span>
+              <img
+                src="./../../../../assets/images/icono 4.png"
+                class="badge-personas"
+              />
+            </span>
+            <span>
+              <strong>Supervisor: </strong
+              >{{ projectData.supervisor | titlecase }}
+            </span>
+          </div>
+          <div class="mb-3 personas">
+            <span>
+              <img
+                src="./../../../../assets/images/icono 4.png"
+                class="badge-personas"
+              />
+            </span>
+            <span>
+              <strong>Contratista: </strong
+              >{{ projectData.contratista | titlecase }}
+            </span>
+          </div>
+          <div class="mb-3 personas">
+            <span>
+              <img
+                src="./../../../../assets/images/icono 4.png"
+                class="badge-personas"
+              />
+            </span>
+            <span>
+              <strong>Nit: </strong>{{ projectData.nit | titlecase }}
+            </span>
+          </div>
+          <div class="mb-3 personas">
+            <span>
+              <img
+                src="./../../../../assets/images/icono 4.png"
+                class="badge-personas"
+              />
+            </span>
+            <span>
+              <strong>Secretaría: </strong
+              >{{ projectData.secretaria | titlecase }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="flex-container align-items-center p-5 text-white">
+        <div class="col6 mr-2">
+          <div class="poblacion mb-3">
+            <img src="./../../../../assets/images/icono 5.png" class="w-25 mr-2" />
+            <div style="text-align: left;">
+              <h1 style="color: #f89b2d; font-size: 30px;">Población Beneficiada</h1>
+              <h4 style="color: #114c87; font-size: 42px;">{{ projectData.poblacionBeneficiada | uppercase }}</h4>
+            </div>
+          </div>
+          <div style="display: inline-flex">
+            <div class="base-circle mr-3">
+              <div class="outer">
+                <div class="inner">
+                  <div id="number1"></div>
+                </div>
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                version="1.1"
+                width="160px"
+                height="160px"
+              >
+                <defs>
+                  <linearGradient id="GradientColor1">
+                    <stop offset="0%" stop-color="#114c87" />
+                    <stop offset="100%" stop-color="#114c87" />
+                  </linearGradient>
+                </defs>
+                <circle cx="80" cy="80" r="70" stroke-linecap="round" id="circle1"/>
+              </svg>
+            </div>
+            <div class="base-circle">
+              <div class="outer">
+                <div class="inner">
+                  <div id="number2"></div>
+                </div>
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                version="1.1"
+                width="160px"
+                height="160px"
+              >
+                <defs>
+                  <linearGradient id="GradientColor2">
+                    <stop offset="0%" stop-color="#f89b2d" />
+                    <stop offset="100%" stop-color="#f89b2d" />
+                  </linearGradient>
+                </defs>
+                <circle cx="80" cy="80" r="70" stroke-linecap="round" id="circle2"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="col6" style="color: #114c87; text-align: justify;">
+          <h4 style="font-weight: bold;">Observaciones</h4>
+          <p>{{ projectData.observaciones }}</p>
+          <h4  style="font-weight: bold;">Impacto Generado</h4>
+          <p>{{ projectData.impactoGenerado }}</p>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
-<button id="btn-back" class="btn btn-sm btn-dark" (click)="goToList()">Volver</button> | <button id="btn-back" class="btn btn-sm btn-warning" (click)="print()">Imprimir</button>
+<button id="btn-back" class="btn btn-sm btn-dark" (click)="goToList()">
+  Volver
+</button>
+|
+<button id="btn-back" class="btn btn-sm btn-warning" (click)="print()">
+  Imprimir
+</button>
