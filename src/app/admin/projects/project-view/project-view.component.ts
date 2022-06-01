@@ -84,7 +84,7 @@ export class ProjectViewComponent implements OnInit {
         clearInterval();
       } else {
         counter += 1;
-        number.innerHTML = counter + "%" + "Avance Físico";
+        number.innerHTML = "<span style='font-size: 28px !important; font-weight: bold;'>" + counter + "%</span>";
       }
     }, 20);
   }
@@ -97,8 +97,12 @@ export class ProjectViewComponent implements OnInit {
         clearInterval();
       } else {
         counter += 1;
-        number.innerHTML = counter + "%" + "Avance Financiero";
+        number.innerHTML = "<span style='font-size: 28px !important; font-weight: bold;'>" + counter + "%</span>";
       }
     }, 20);
+  }
+
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 }
